@@ -57,7 +57,7 @@ public class Authentication {
         }
     }
 
-    @And("click login button")
+    @And("User click login button")
     public void clickLoginButton() throws InterruptedException {
         this.driver.findElement(By.xpath("//button[@type='submit']")).click();
         Thread.sleep(timeout);
@@ -107,14 +107,10 @@ public class Authentication {
         this.driver.close();
     }
 
-    @And("user success login")
-    public void userSuccessLogin() {
+    @And("User click logout button on Dashboard page")
+    public void clickLogoutButton() throws InterruptedException {
         String PageUrl = this.driver.getCurrentUrl();
         Assert.assertEquals(PageUrl, "https://kasirdemo.belajarqa.com/dashboard");
-    }
-
-    @And("click logout button")
-    public void clickLogoutButton() throws InterruptedException {
         Thread.sleep(timeout);
         this.driver.findElement(By.id("menu-button-14")).click();
         Thread.sleep(timeout);
