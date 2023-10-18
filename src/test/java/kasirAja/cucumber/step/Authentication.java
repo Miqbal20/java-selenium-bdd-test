@@ -10,14 +10,14 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.time.Duration;
 
 
-public class Login {
+public class Authentication {
     public WebDriver driver;
     public String baseUrl = "https://kasirdemo.belajarqa.com";
     public Integer timeout = 1000;
 
     public Object[][] loginData;
 
-    public Login(){
+    public Authentication(){
         // apply chrome driver setup
         WebDriverManager.chromedriver().setup();
         ChromeOptions opt = new ChromeOptions();
@@ -104,6 +104,33 @@ public class Login {
         Assert.assertEquals(AlertFailedText, "Kredensial yang Anda berikan salah");
         Assert.assertEquals(CurrentUrl, "https://kasirdemo.belajarqa.com/login");
 
+        this.driver.close();
+    }
+
+    @And("user success login")
+    public void userSuccessLogin() {
+        String PageUrl = this.driver.getCurrentUrl();
+        Assert.assertEquals(PageUrl, "https://kasirdemo.belajarqa.com/dashboard");
+    }
+
+    @And("click logout button")
+    public void clickLogoutButton() throws InterruptedException {
+        Thread.sleep(timeout);
+        this.driver.findElement(By.id("menu-button-14")).click();
+        Thread.sleep(timeout);
+        this.driver.findElement(By.id("menu-list-14-menuitem-12")).click();
+    }
+
+    @Then("User redirect to login page")
+    public void userRedirectToLoginPage() throws InterruptedException {
+        // Assertion
+        String PageTitle = this.driver.getTitle();
+        String CurrentUrl = this.driver.getCurrentUrl();
+
+        Assert.assertEquals(PageTitle, "kasirAja");
+        Assert.assertEquals(CurrentUrl, "https://kasirdemo.belajarqa.com/login");
+
+        Thread.sleep(timeout);
         this.driver.close();
     }
 }

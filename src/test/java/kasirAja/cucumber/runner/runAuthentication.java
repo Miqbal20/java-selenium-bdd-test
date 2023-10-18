@@ -9,9 +9,9 @@ import org.junit.runner.RunWith;
         features = "src/test/java/kasirAja/cucumber/features",
         glue = "kasirAja.cucumber.step",
         plugin = {"html:target/HTML_report.html"},
-        tags = "@Positive"
+        tags = "@Regression"
 )
 
-public class runLogin {
+public class runAuthentication {
 
 }
