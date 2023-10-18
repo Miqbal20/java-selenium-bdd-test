@@ -1,5 +1,4 @@
-package kasirAja;
-
+package kasirAja.tdd;
 import com.opencsv.exceptions.CsvValidationException;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
@@ -10,13 +9,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-
-
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.Duration;
-import java.util.Arrays;
-
 import com.opencsv.CSVReader;
 
 
